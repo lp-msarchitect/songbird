@@ -29,6 +29,16 @@ function App() {
     }
   }
 
+  const moveToNext = () => {
+    setLevelState(state => {
+      return {
+        currentLvl: state.currentLvl + 1,
+        isRight: false,
+        rightIndex: rndNumber(0, 5)
+      }
+    })
+  }
+
   return (
     <>
       <Header levelNumber={levelState.currentLvl} />
@@ -43,12 +53,8 @@ function App() {
       />
       <Description />
       <button
-        disabled
-        onClick={() => {
-          setLevelState((state) => {
-            return { ...state, currentLvl: state.currentLvl + 1 }
-          })
-        }}
+        disabled={!levelState.isRight}
+        onClick={moveToNext}
       >Next Level</button>
     </>
   );

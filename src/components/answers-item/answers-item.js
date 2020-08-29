@@ -5,7 +5,7 @@ const AnswersItem = (props) => {
     const { name, handlerClick } = props;
 
     return (
-        <span onClick={handlerClick}>
+        <span onClick={handlerClick} className="">
             {name}
         </span>
     );
