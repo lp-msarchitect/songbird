@@ -4,7 +4,7 @@ import Question from '../question/question';
 import Answers from '../answers/answers';
 import Description from '../description/description';
 import birdsData from '../../data/birdsData';
-import { rndNumber, shuffleArr } from '../../utils';
+import { rndNumber } from '../../utils';
 
 
 function App() {
