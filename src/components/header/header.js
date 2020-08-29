@@ -1,6 +1,8 @@
 import React from 'react';
 
 const Header = (props) => {
+    const { levelNumber } = props;
+
     return (
         <header>
             <div>
@@ -10,7 +12,7 @@ const Header = (props) => {
                 Score: 0
             </div>
             <div>
-                Questions
+                Current level: {levelNumber + 1}
             </div>
         </header>
     );
