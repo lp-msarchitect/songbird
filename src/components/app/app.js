@@ -4,16 +4,19 @@ import Question from '../question/question';
 import Answers from '../answers/answers';
 import Description from '../description/description';
 import birdsData from '../../data/birdsData';
-import { rndNumber } from '../../utils';
+import { rndNumber, shuffleArr } from '../../utils';
 
 
 function App() {
 
   const [currentLvl, setCurrentLvl] = useState(0);
 
-  const birds = birdsData[currentLvl];
+  const options = (birdsData[currentLvl]);
+  const rightAnswerIndex = rndNumber(0, options.length - 1);
+
 
   const chooseAnswer = (id) => {
+    if (options[rightAnswerIndex].id === id) console.log('Right!');
     console.log(id);
   }
 
@@ -22,7 +25,7 @@ function App() {
       <Header levelNumber={currentLvl} />
       <Question />
       <Answers
-        answers={birds}
+        answers={options}
         onChoose={chooseAnswer}
       />
       <Description />
