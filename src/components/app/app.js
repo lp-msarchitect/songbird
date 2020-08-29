@@ -4,19 +4,29 @@ import Question from '../question/question';
 import Answers from '../answers/answers';
 import Description from '../description/description';
 import birdsData from '../../data/birdsData';
+import { rndNumber } from '../../utils';
 
 
 function App() {
 
   const [currentLvl, setCurrentLvl] = useState(0);
 
+  const birds = birdsData[currentLvl];
+
   return (
     <>
       <Header levelNumber={currentLvl} />
       <Question />
-      <Answers />
+      <Answers
+        answers={birds}
+      />
       <Description />
-      <button>Next Level</button>
+      <button
+        disabled
+        onClick={() => {
+          setCurrentLvl(currentLvl + 1);
+        }}
+      >Next Level</button>
     </>
   );
 }
