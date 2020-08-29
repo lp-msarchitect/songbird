@@ -9,21 +9,33 @@ import { rndNumber, shuffleArr } from '../../utils';
 
 function App() {
 
-  const [currentLvl, setCurrentLvl] = useState(0);
+  const [levelState, setLevelState] = useState({
+    currentLvl: 0,
+    isRight: false,
+    rightIndex: rndNumber(0, 5)
+  });
 
-  const options = (birdsData[currentLvl]);
-  const rightAnswerId = options[rndNumber(0, options.length - 1)].id;
+  const options = (birdsData[levelState.currentLvl]);
+  const answer = options[levelState.rightIndex];
+  console.log('Right answer is ' + answer.name);
+  const rightAnswerId = answer.id;
 
 
   const chooseAnswer = (id) => {
-    if (rightAnswerId === id) console.log('Right!');
-    console.log(id);
+    if (rightAnswerId === id) {
+      setLevelState(state => {
+        return { ...state, isRight: true }
+      })
+    }
   }
 
   return (
     <>
-      <Header levelNumber={currentLvl} />
-      <Question />
+      <Header levelNumber={levelState.currentLvl} />
+      <Question
+        answer={answer}
+        isRight={levelState.isRight}
+      />
       <Answers
         answers={options}
         onChoose={chooseAnswer}
@@ -33,7 +45,9 @@ function App() {
       <button
         disabled
         onClick={() => {
-          setCurrentLvl(currentLvl + 1);
+          setLevelState((state) => {
+            return { ...state, currentLvl: state.currentLvl + 1 }
+          })
         }}
       >Next Level</button>
     </>

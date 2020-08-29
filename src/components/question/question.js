@@ -1,9 +1,12 @@
 import React from 'react';
 
-const Question = () => {
+const Question = (props) => {
+    const { answer, isRight } = props
     return (
         <div>
-            Question
+            Name: {isRight ? answer.name : ''}
+            <img src={isRight ? answer.image : ''} alt="" />
+            Question: {answer.audio}
         </div>
     );
 };
