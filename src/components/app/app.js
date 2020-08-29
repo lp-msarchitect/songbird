@@ -22,6 +22,7 @@ function App() {
 
 
   const chooseAnswer = (id) => {
+    if (levelState.isRight) return;
     if (rightAnswerId === id) {
       setLevelState(state => {
         return { ...state, isRight: true }
