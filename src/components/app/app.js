@@ -13,12 +13,17 @@ function App() {
 
   const birds = birdsData[currentLvl];
 
+  const chooseAnswer = (id) => {
+    console.log(id);
+  }
+
   return (
     <>
       <Header levelNumber={currentLvl} />
       <Question />
       <Answers
         answers={birds}
+        onChoose={chooseAnswer}
       />
       <Description />
       <button
