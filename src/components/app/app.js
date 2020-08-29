@@ -12,11 +12,11 @@ function App() {
   const [currentLvl, setCurrentLvl] = useState(0);
 
   const options = (birdsData[currentLvl]);
-  const rightAnswerIndex = rndNumber(0, options.length - 1);
+  const rightAnswerId = options[rndNumber(0, options.length - 1)].id;
 
 
   const chooseAnswer = (id) => {
-    if (options[rightAnswerIndex].id === id) console.log('Right!');
+    if (rightAnswerId === id) console.log('Right!');
     console.log(id);
   }
 
@@ -27,6 +27,7 @@ function App() {
       <Answers
         answers={options}
         onChoose={chooseAnswer}
+        rightId={rightAnswerId}
       />
       <Description />
       <button
