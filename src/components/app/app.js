@@ -16,6 +16,14 @@ function App() {
   });
 
   const options = (birdsData[levelState.currentLvl]);
+
+  const answers = options.map(item => {
+    return {
+      id: item.id,
+      name: item.name,
+    }
+  });
+
   const answer = options[levelState.rightIndex];
   console.log('Right answer is ' + answer.name);
   const rightAnswerId = answer.id;
@@ -48,7 +56,7 @@ function App() {
         isRight={levelState.isRight}
       />
       <Answers
-        answers={options}
+        answers={answers}
         onChoose={chooseAnswer}
         rightId={rightAnswerId}
       />
