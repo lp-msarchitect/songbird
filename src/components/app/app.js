@@ -17,6 +17,7 @@ function App() {
   });
 
   const [clickedAnswers, setClickedAnswers] = useState([]);
+  const [seletedOption, setSelectedOption] = useState(null);
 
   const options = (birdsData[levelState.currentLvl]);
 
@@ -33,6 +34,8 @@ function App() {
 
 
   const chooseAnswer = (id) => {
+
+    setSelectedOption(options.find(item => item.id === id));
     if (levelState.isRight) return;
     setClickedAnswers(clicked => {
       return [...clicked, id];
@@ -78,7 +81,7 @@ function App() {
         rightId={rightAnswerId}
       />
       <Description
-
+        selected={seletedOption}
       />
       <button
         disabled={!levelState.isRight}
