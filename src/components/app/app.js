@@ -9,6 +9,7 @@ import Win from '../win/win';
 import useSound from 'use-sound';
 import rightSfx from '../../assets/right.mp3';
 import wrongSfx from '../../assets/wrong.mp3';
+import styled from 'styled-components';
 
 
 function App() {
@@ -94,8 +95,14 @@ function App() {
     setScore(0);
   }
 
+  const AppContainer = styled.div`
+    height: 100vh;
+    width: 1000px;
+    color: var(--textcolor);
+  `;
+
   return (
-    <>
+    <AppContainer>
       {levelState.isWin ? (<Win clickHandler={restart} />) :
         (
           <>
@@ -123,7 +130,7 @@ function App() {
           </>
         )
       }
-    </>
+    </AppContainer>
   );
 }
 
