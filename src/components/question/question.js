@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const QuestionContainer = styled.div`
     display: flex;
     padding: 0 2rem;
-    background-color: #666;
+    background-color: #999;
     border-radius: 5px;
     align-items: center;
 `;

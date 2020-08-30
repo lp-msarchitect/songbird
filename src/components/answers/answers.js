@@ -9,6 +9,7 @@ const List = styled.ul`
         font-size: 1.5rem;
         border-radius: 5px;
         border: 1px solid white;
+        background-color: #999;
 `;
 
 const ListItem = styled.li`
