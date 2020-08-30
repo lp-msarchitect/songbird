@@ -16,6 +16,8 @@ function App() {
     isWin: false,
   });
 
+  const [clickedAnswers, setClickedAnswers] = useState([]);
+
   const options = (birdsData[levelState.currentLvl]);
 
   const answers = options.map(item => {
@@ -32,6 +34,9 @@ function App() {
 
   const chooseAnswer = (id) => {
     if (levelState.isRight) return;
+    setClickedAnswers(clicked => {
+      return [...clicked, id];
+    })
     if (rightAnswerId === id) {
       setLevelState(state => {
         return { ...state, isRight: true }
@@ -48,6 +53,7 @@ function App() {
         }
       })
     } else {
+      setClickedAnswers([]);
       setLevelState(state => {
         return {
           currentLvl: state.currentLvl + 1,
@@ -67,10 +73,13 @@ function App() {
       />
       <Answers
         answers={answers}
+        clicked={clickedAnswers}
         onChoose={chooseAnswer}
         rightId={rightAnswerId}
       />
-      <Description />
+      <Description
+
+      />
       <button
         disabled={!levelState.isRight}
         onClick={moveToNext}
