@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import LevelList from '../levelsList/leveList'
 
 const Header = (props) => {
     const { levelNumber, score } = props;
@@ -15,6 +16,7 @@ const Header = (props) => {
 
 
 
+
     return (
         <HeaderContainer>
             <HalfFlex>
@@ -23,9 +25,7 @@ const Header = (props) => {
             <HalfFlex>
                 Score: {score}
             </HalfFlex>
-            <div>
-                Current level: {levelNumber + 1}
-            </div>
+            <LevelList levelNumber={levelNumber} />
         </HeaderContainer>
     );
 }

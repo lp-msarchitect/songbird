@@ -91,7 +91,7 @@ function App() {
     });
     setClickedAnswers([]);
     setSelectedOption(null);
-    setScore(0)
+    setScore(0);
   }
 
   return (
