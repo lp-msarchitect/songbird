@@ -3,7 +3,7 @@ import Header from '../header/header';
 import Question from '../question/question';
 import Answers from '../answers/answers';
 import Description from '../description/description';
-import birdsData from '../../data/birdsData';
+import data from '../../data/birdsData';
 import { rndNumber } from '../../utils';
 
 
@@ -17,9 +17,9 @@ function App() {
   });
 
   const [clickedAnswers, setClickedAnswers] = useState([]);
-  const [seletedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(null);
 
-  const options = (birdsData[levelState.currentLvl]);
+  const options = (data[levelState.currentLvl]);
 
   const answers = options.map(item => {
     return {
@@ -48,7 +48,7 @@ function App() {
   }
 
   const moveToNext = () => {
-    if (levelState.currentLvl === birdsData.length - 1) {
+    if (levelState.currentLvl === data.length - 1) {
       setLevelState(state => {
         return {
           ...state,
@@ -81,7 +81,7 @@ function App() {
         rightId={rightAnswerId}
       />
       <Description
-        selected={seletedOption}
+        selected={selectedOption}
       />
       <button
         disabled={!levelState.isRight}
