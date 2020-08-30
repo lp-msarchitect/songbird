@@ -1,20 +1,32 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const Header = (props) => {
     const { levelNumber } = props;
 
+    const HeaderContainer = styled.header`
+        display: flex;
+        flex-wrap: wrap;
+    `;
+
+    const HalfFlex = styled.div`
+        flex-basis: 50%;
+    `;
+
+
+
     return (
-        <header>
-            <div>
+        <HeaderContainer>
+            <HalfFlex>
                 Logo
-            </div>
-            <div>
+            </HalfFlex>
+            <HalfFlex>
                 Score: 0
-            </div>
+            </HalfFlex>
             <div>
                 Current level: {levelNumber + 1}
             </div>
-        </header>
+        </HeaderContainer>
     );
 }
 
