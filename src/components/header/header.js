@@ -2,29 +2,34 @@ import React from 'react';
 import styled from 'styled-components';
 import LevelList from '../levelsList/leveList'
 
-const Header = (props) => {
-    const { levelNumber, score } = props;
-
-    const HeaderContainer = styled.header`
+const HeaderContainer = styled.header`
         display: flex;
         flex-wrap: wrap;
     `;
 
-    const HalfFlex = styled.div`
+const Logo = styled.div`
         flex-basis: 50%;
     `;
 
+const Score = styled.div`
+        flex-basis: 50%;
+        display:flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: 2.5rem;
+    `;
 
-
+const Header = (props) => {
+    const { levelNumber, score } = props;
 
     return (
         <HeaderContainer>
-            <HalfFlex>
+            <Logo>
                 <img src={process.env.PUBLIC_URL + '/Logo.png'} />
-            </HalfFlex>
-            <HalfFlex>
-                Score: {score}
-            </HalfFlex>
+            </Logo>
+            <Score>
+                <span>Score: {score}</span>
+            </Score>
             <LevelList levelNumber={levelNumber} />
         </HeaderContainer>
     );

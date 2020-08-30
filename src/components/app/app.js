@@ -12,6 +12,13 @@ import wrongSfx from '../../assets/wrong.mp3';
 import styled from 'styled-components';
 
 
+const AppContainer = styled.div`
+  height: 100vh;
+  max-width: 1200px;
+  color: var(--textcolor);
+  margin: 0 auto;
+`;
+
 function App() {
   const [levelState, setLevelState] = useState({
     currentLvl: 0,
@@ -95,11 +102,7 @@ function App() {
     setScore(0);
   }
 
-  const AppContainer = styled.div`
-    height: 100vh;
-    width: 1000px;
-    color: var(--textcolor);
-  `;
+
 
   return (
     <AppContainer>
