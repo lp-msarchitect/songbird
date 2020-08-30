@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Header = (props) => {
-    const { levelNumber } = props;
+    const { levelNumber, score } = props;
 
     const HeaderContainer = styled.header`
         display: flex;
@@ -21,7 +21,7 @@ const Header = (props) => {
                 Logo
             </HalfFlex>
             <HalfFlex>
-                Score: 0
+                Score: {score}
             </HalfFlex>
             <div>
                 Current level: {levelNumber + 1}

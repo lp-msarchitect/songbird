@@ -18,6 +18,7 @@ function App() {
 
   const [clickedAnswers, setClickedAnswers] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
+  const [score, setScore] = useState(0);
 
   const options = (data[levelState.currentLvl]);
 
@@ -34,15 +35,20 @@ function App() {
 
 
   const chooseAnswer = (id) => {
-
     setSelectedOption(options.find(item => item.id === id));
     if (levelState.isRight) return;
     setClickedAnswers(clicked => {
       return [...clicked, id];
     })
     if (rightAnswerId === id) {
+      const newScore = score + 5 - clickedAnswers.length;
+      console.log(newScore);
+      setScore(newScore);
       setLevelState(state => {
-        return { ...state, isRight: true }
+        return {
+          ...state,
+          isRight: true
+        }
       })
     }
   }
@@ -59,6 +65,7 @@ function App() {
       setClickedAnswers([]);
       setLevelState(state => {
         return {
+          ...state,
           currentLvl: state.currentLvl + 1,
           isRight: false,
           rightIndex: rndNumber(0, 5)
@@ -69,7 +76,10 @@ function App() {
 
   return (
     <>
-      <Header levelNumber={levelState.currentLvl} />
+      <Header
+        levelNumber={levelState.currentLvl}
+        score={score}
+      />
       <Question
         answer={answer}
         isRight={levelState.isRight}
