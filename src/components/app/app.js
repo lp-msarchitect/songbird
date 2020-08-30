@@ -5,6 +5,7 @@ import Answers from '../answers/answers';
 import Description from '../description/description';
 import data from '../../data/birdsData';
 import { rndNumber } from '../../utils';
+import Win from '../win/win';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
   const [clickedAnswers, setClickedAnswers] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
   const [score, setScore] = useState(0);
+  const [sound, setSound] = useState('');
 
   const options = (data[levelState.currentLvl]);
 
@@ -74,30 +76,47 @@ function App() {
     }
   }
 
+  const restart = () => {
+    setLevelState({
+      currentLvl: 0,
+      isRight: false,
+      rightIndex: rndNumber(0, 5),
+      isWin: false,
+    });
+    setClickedAnswers([]);
+    setSelectedOption(null);
+    setScore(0)
+  }
+
   return (
     <>
-      <Header
-        levelNumber={levelState.currentLvl}
-        score={score}
-      />
-      <Question
-        answer={answer}
-        isRight={levelState.isRight}
-      />
-      <Answers
-        answers={answers}
-        clicked={clickedAnswers}
-        onChoose={chooseAnswer}
-        rightId={rightAnswerId}
-      />
-      <Description
-        selected={selectedOption}
-      />
-      <button
-        disabled={!levelState.isRight}
-        onClick={moveToNext}
-      >Next Level</button>
-      {levelState.isWin ? (<div>You are win</div>) : null}
+      {levelState.isWin ? (<Win clickHandler={restart} />) :
+        (
+          <>
+            <Header
+              levelNumber={levelState.currentLvl}
+              score={score}
+            />
+            <Question
+              answer={answer}
+              isRight={levelState.isRight}
+            />
+            <Answers
+              answers={answers}
+              clicked={clickedAnswers}
+              onChoose={chooseAnswer}
+              rightId={rightAnswerId}
+            />
+            <Description
+              selected={selectedOption}
+            />
+            <button
+              disabled={!levelState.isRight}
+              onClick={moveToNext}
+            >Next Level</button>
+          </>
+        )
+      }
     </>
   );
 }
