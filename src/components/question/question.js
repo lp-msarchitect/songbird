@@ -1,5 +1,5 @@
 import React from 'react';
-import AudioPlayer from 'react-h5-audio-player';
+import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import styled from 'styled-components';
 
@@ -38,9 +38,19 @@ const Question = (props) => {
                 <Name>{isRight ? answer.name : '*****'}</Name>
                 <AudioPlayer
                     src={answer.audio}
-                    showJumpControls={false}
+                    autoPlayAfterSrcChange={false}
                     layout="horizontal-reverse"
+                    showJumpControls={false}
                     customAdditionalControls={[]}
+                    customVolumeControls={[]}
+                    customProgressBarSection={
+                        [
+                            RHAP_UI.CURRENT_TIME,
+                            RHAP_UI.PROGRESS_BAR,
+                            RHAP_UI.DURATION,
+                            RHAP_UI.VOLUME
+                        ]
+                    }
                 />
             </Info>
         </QuestionContainer>

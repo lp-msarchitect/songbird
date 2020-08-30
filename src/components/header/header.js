@@ -19,13 +19,18 @@ const Score = styled.div`
         font-size: 2.5rem;
     `;
 
+const Img = styled.img`
+    width: 200px;
+    height: 55px;
+`;
+
 const Header = (props) => {
     const { levelNumber, score } = props;
 
     return (
         <HeaderContainer>
             <Logo>
-                <img src={process.env.PUBLIC_URL + '/Logo.png'} />
+                <Img src={process.env.PUBLIC_URL + '/Logo.png'} />
             </Logo>
             <Score>
                 <span>Score: {score}</span>

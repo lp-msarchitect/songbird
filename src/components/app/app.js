@@ -19,6 +19,25 @@ const AppContainer = styled.div`
   margin: 0 auto;
 `;
 
+const Container = styled.div`
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(200px, 1fr));
+  grid-gap: 1rem;
+`;
+
+const Button = styled.button`
+  margin-top: 1rem;
+  padding: 0.25rem;
+  color: var(--textcolor);
+  width: 100%;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  border: 1px solid white;
+  background-color: #999;
+  cursor:pointer;
+`;
+
 function App() {
   const [levelState, setLevelState] = useState({
     currentLvl: 0,
@@ -51,7 +70,7 @@ function App() {
     setSelectedOption(options.find(item => item.id === id));
     if (levelState.isRight) return;
     setClickedAnswers(clicked => {
-      return [...clicked, id];
+      return clicked.includes(id) ? [...clicked] : [...clicked, id];
     })
     if (rightAnswerId === id) {
       playRight();
@@ -117,19 +136,21 @@ function App() {
               answer={answer}
               isRight={levelState.isRight}
             />
-            <Answers
-              answers={answers}
-              clicked={clickedAnswers}
-              onChoose={chooseAnswer}
-              rightId={rightAnswerId}
-            />
-            <Description
-              selected={selectedOption}
-            />
-            <button
+            <Container>
+              <Answers
+                answers={answers}
+                clicked={clickedAnswers}
+                onChoose={chooseAnswer}
+                rightId={rightAnswerId}
+              />
+              <Description
+                selected={selectedOption}
+              />
+            </Container>
+            <Button
               disabled={!levelState.isRight}
               onClick={moveToNext}
-            >Next Level</button>
+            >Next Level</Button>
           </>
         )
       }

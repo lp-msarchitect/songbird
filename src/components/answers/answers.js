@@ -4,6 +4,7 @@ import { waitForDomChange } from '@testing-library/react';
 import styled from 'styled-components';
 
 const List = styled.ul`
+        margin: 0;
         padding-left: 0;
         list-style: none;
         font-size: 1.5rem;
@@ -13,11 +14,13 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li`
-    padding: 0.5rem 0.5rem;
+    padding: 0.5rem 0.7rem;
     padding-left: 1rem;
-    border: 1px solid white;
+    border-bottom: 1px solid white;
     cursor: pointer;
-    /* background-color: ${(props) => (props.current ? "blue" : "transparent")}; */
+    :last-child{
+        border-bottom:0;
+    }
 `;
 
 const Answers = (props) => {
