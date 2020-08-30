@@ -12,7 +12,8 @@ function App() {
   const [levelState, setLevelState] = useState({
     currentLvl: 0,
     isRight: false,
-    rightIndex: rndNumber(0, 5)
+    rightIndex: rndNumber(0, 5),
+    isWin: false,
   });
 
   const options = (birdsData[levelState.currentLvl]);
@@ -39,13 +40,22 @@ function App() {
   }
 
   const moveToNext = () => {
-    setLevelState(state => {
-      return {
-        currentLvl: state.currentLvl + 1,
-        isRight: false,
-        rightIndex: rndNumber(0, 5)
-      }
-    })
+    if (levelState.currentLvl === birdsData.length - 1) {
+      setLevelState(state => {
+        return {
+          ...state,
+          isWin: true
+        }
+      })
+    } else {
+      setLevelState(state => {
+        return {
+          currentLvl: state.currentLvl + 1,
+          isRight: false,
+          rightIndex: rndNumber(0, 5)
+        }
+      })
+    }
   }
 
   return (
@@ -65,6 +75,7 @@ function App() {
         disabled={!levelState.isRight}
         onClick={moveToNext}
       >Next Level</button>
+      {levelState.isWin ? (<div>You are win</div>) : null}
     </>
   );
 }
