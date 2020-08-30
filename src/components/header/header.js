@@ -18,7 +18,7 @@ const Header = (props) => {
     return (
         <HeaderContainer>
             <HalfFlex>
-                Logo
+                <img src={process.env.PUBLIC_URL + '/Logo.png'} />
             </HalfFlex>
             <HalfFlex>
                 Score: {score}

@@ -12,7 +12,6 @@ import wrongSfx from '../../assets/wrong.mp3';
 
 
 function App() {
-
   const [levelState, setLevelState] = useState({
     currentLvl: 0,
     isRight: false,
@@ -23,7 +22,6 @@ function App() {
   const [clickedAnswers, setClickedAnswers] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
   const [score, setScore] = useState(0);
-  const [sound, setSound] = useState('');
   const [playRight] = useSound(rightSfx);
   const [playWrong] = useSound(wrongSfx);
 
