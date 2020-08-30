@@ -6,6 +6,9 @@ import Description from '../description/description';
 import data from '../../data/birdsData';
 import { rndNumber } from '../../utils';
 import Win from '../win/win';
+import useSound from 'use-sound';
+import rightSfx from '../../assets/right.mp3';
+import wrongSfx from '../../assets/wrong.mp3';
 
 
 function App() {
@@ -21,6 +24,8 @@ function App() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [score, setScore] = useState(0);
   const [sound, setSound] = useState('');
+  const [playRight] = useSound(rightSfx);
+  const [playWrong] = useSound(wrongSfx);
 
   const options = (data[levelState.currentLvl]);
 
@@ -43,6 +48,7 @@ function App() {
       return [...clicked, id];
     })
     if (rightAnswerId === id) {
+      playRight();
       const newScore = score + 5 - clickedAnswers.length;
       console.log(newScore);
       setScore(newScore);
@@ -52,6 +58,8 @@ function App() {
           isRight: true
         }
       })
+    } else {
+      playWrong();
     }
   }
 
