@@ -125,7 +125,7 @@ function App() {
 
   return (
     <AppContainer>
-      {levelState.isWin ? (<Win clickHandler={restart} />) :
+      {levelState.isWin ? (<Win clickHandler={restart} score={score} />) :
         (
           <>
             <Header
